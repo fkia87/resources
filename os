@@ -8,7 +8,3 @@ echo $DISTRO
 function checkuser {
 [[ $UID == "0" ]] || { echo "You are not root."; exit 1; }
 }
-
-function dummy {
-    echo salam
-}
