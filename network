@@ -15,6 +15,7 @@ fi
 
 function getifip {
 # Returns IP of a given interface.
+# Usage: getifip <interface>
 ip -4 a show dev $1 | grep 'inet ' | head -n 1 | awk {'print $2'} | cut -d / -f 1
 }
 
@@ -24,5 +25,16 @@ echo "Checking net.ipv4.ip_forward..."
 if grep '0' /proc/sys/net/ipv4/ip_forward >/dev/null; then
     echo "net.ipv4.ip_forward = 1" >> /etc/sysctl.conf
     sysctl -p > /dev/null 2>&1
+fi
+}
+
+function check_ipprivate {
+# Checks if given IP address is in class C private range. (192.168.0.0/16)
+# Usage: check_ipprivate <IP address>
+if [[ "$1" =~ ^192\.168\.([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])\.\
+([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])$ ]]; then
+	return 0
+else
+    return 1
 fi
 }
