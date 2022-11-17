@@ -2,10 +2,17 @@
 # COLORS AND BACKGROUNDS 
 ##############################################################################
 # note: \e or \x1B also work instead of \033 
-# Reset
-declare -r DECOLOR='\033[0m' # Text Reset
 
-# Regular Colors
+# Reset
+declare -r DECOLOR='\033[0m'       # Reset all attributes
+declare -r UNBOLD='\033[21m'       # Reset Bold/Bright
+declare -r UNDIM='\033[22m'        # Reset Dim
+declare -r DEUNDERLINE='\033[24m'  # Reset Underline
+declare -r UNBLINK='\033[25m'      # Reset Blink
+declare -r DEINVERT='\033[27m'     # Reset Inverted Background
+declare -r UNHIDE='\033[28m'       # Reset Hidden
+
+# Colors
 declare -r BLACK='\033[0;30m'      # Black
 declare -r RED='\033[0;31m'        # Red
 declare -r GREEN='\033[0;32m'      # Green
@@ -14,8 +21,6 @@ declare -r BLUE='\033[0;34m'       # Blue
 declare -r PURPLE='\033[0;35m'     # Purple
 declare -r CYAN='\033[0;36m'       # Cyan
 declare -r WHITE='\033[0;97m'      # White
-
-# Additional colors
 declare -r LGREY='\033[0;37m'      # Light Gray
 declare -r DGREY='\033[0;90m'      # Dark Gray
 declare -r LRED='\033[0;91m'       # Light Red
@@ -56,3 +61,15 @@ declare -r ON_BLUE='\033[44m'      # Blue
 declare -r ON_PURPLE='\033[45m'    # Purple
 declare -r ON_CYAN='\033[46m'      # Cyan
 declare -r ON_WHITE='\033[47m'     # White
+
+# Dim
+declare -r DIM='\033[2m'
+
+# Blink
+declare -r BLINK='\033[5m'
+
+# Invert Background
+declare -r INVERT='\033[7m'
+
+# Hidden
+declare -r HIDE='\033[8m'
