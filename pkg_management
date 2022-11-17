@@ -1,5 +1,5 @@
 function os {
-DISTRO=$(cat /etc/os-release | grep -e '^ID=' \
+declare -r DISTRO=$(cat /etc/os-release | grep -e '^ID=' \
 | cut -d = -f 2 | sed -e 's/[[:punct:]]//g' \
 | tr [:upper:] [:lower:])
 echo $DISTRO
