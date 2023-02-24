@@ -6,29 +6,20 @@ echo $DISTRO
 }
 
 function install_pkg {
-echo -e "\nInstalling $1..."
+echo -e "\nInstalling $@..."
 case $(os) in
 centos | fedora)
-    while ! rpm -q $1 >/dev/null 2>&1
-    do
-        yum -y install $1
-        sleep 1
-    done
+    yum -y install $@
+    sleep 1
     ;;
 ubuntu)
-    while ! dpkg -l | grep $1 >/dev/null 2>&1
-    do
-        apt update
-        apt -y install $1
-        sleep 1
-    done
+    apt update
+    apt -y install $@
+    sleep 1
     ;;
 manjaro)
-    while ! pacman -Q $1 >/dev/null 2>&1
-    do
-        pacman -Sy --noconfirm $1
-        sleep 1
-    done
+    pacman -Sy --noconfirm $@
+    sleep 1
     ;;
 esac
 }
