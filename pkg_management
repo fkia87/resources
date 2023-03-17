@@ -1,9 +1,4 @@
-function os {
-declare -r DISTRO=$(cat /etc/os-release | grep -e '^ID=' \
-| cut -d = -f 2 | sed -e 's/[[:punct:]]//g' \
-| tr [:upper:] [:lower:])
-echo $DISTRO
-}
+source ${PWD}/$(dirname $0)/os > /dev/null 2>&1
 
 function install_pkg {
 echo -e "\nInstalling $@..."
