@@ -1,0 +1,6 @@
+# shellcheck disable=SC2148
+
+ask() {
+read -p -r "$1 [y/N]" answer
+[[ "$answer" =~ [yY].* ]] && $2
+}

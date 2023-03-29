@@ -2,7 +2,7 @@
 
 source "${PWD}"/"$(dirname "$0")"/os > /dev/null 2>&1
 
-function install_pkg {
+install_pkg() {
 echo -e "\nInstalling $*..."
 case $(os) in
 centos | fedora)
