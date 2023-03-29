@@ -1,8 +1,10 @@
+# shellcheck disable=SC2148
+
 function os {
-declare -r DISTRO=$(cat /etc/os-release | grep -e '^ID=' \
+declare -r DISTRO=$(grep -e '^ID=' /etc/os-release \
 | cut -d = -f 2 | sed -e 's/[[:punct:]]//g' \
-| tr [:upper:] [:lower:])
-echo $DISTRO
+| tr "[:upper:]" "[:lower:]")
+echo "$DISTRO"
 }
 
 function checkuser {

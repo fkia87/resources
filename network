@@ -1,3 +1,5 @@
+# shellcheck disable=SC2148,SC2207
+
 function find_mainif {
 # Sets variable "MAINIF" to the name of the network interface through which 
 # system connects to internet.
@@ -5,7 +7,7 @@ iflist=( $(find /sys/class/net/ | rev | cut -d / -f1 | rev | sed '/^$/d') )
 tmp=( $(ip route |grep default |sed -e 's/^\s*//;s/\s/\n/g;') )
 
 for var in "${tmp[@]}"; do
-    [[ " ${iflist[*]} " =~ " ${var} " ]] && MAINIF=$var
+    [[ " ${iflist[*]} " =~ ${var} ]] && MAINIF=$var
 done
 if [[ -z $MAINIF ]]; then
     echo -e "\nCouldn't determine the main interface on the system.\n" >&2
@@ -16,7 +18,7 @@ fi
 function getifip {
 # Returns IP of a given interface.
 # Usage: getifip <interface>
-ip -4 a show dev $1 | grep 'inet ' | head -n 1 | awk {'print $2'} | cut -d / -f 1
+ip -4 a show dev "$1" | grep 'inet ' | head -n 1 | awk '{print $2}' | cut -d / -f 1
 }
 
 function enable_ipforward {

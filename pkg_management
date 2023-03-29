@@ -1,7 +1,9 @@
-source ${PWD}/$(dirname $0)/os > /dev/null 2>&1
+# shellcheck disable=SC2148,SC1090,SC2068
+
+source "${PWD}"/"$(dirname "$0")"/os > /dev/null 2>&1
 
 function install_pkg {
-echo -e "\nInstalling $@..."
+echo -e "\nInstalling $*..."
 case $(os) in
 centos | fedora)
     yum -y install $@
