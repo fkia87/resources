@@ -1,12 +1,13 @@
 # shellcheck disable=SC2148,SC1090,SC2068
 
-source "${PWD}"/"$(dirname "$0")"/os > /dev/null 2>&1
+source "${PWD}"/"$(dirname "$0")"/os > /dev/null 2>&1 || \
+{ echo "$0: Unable to source \"os\"."  >&2; exit 1; }
 
 install_pkg() {
 echo -e "\nInstalling $*..."
 case $(os) in
 centos | fedora)
-    yum -y install $@
+    yum -y install $@ || dnf -y install $@
     sleep 1
     ;;
 ubuntu)
@@ -14,7 +15,7 @@ ubuntu)
     apt -y install $@
     sleep 1
     ;;
-manjaro)
+manjaro|arch*)
     pacman -Sy --noconfirm $@
     sleep 1
     ;;
