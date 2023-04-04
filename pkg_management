@@ -20,7 +20,9 @@ centos | fedora)
     ;;
 ubuntu)
     apt update
-    apt -y install $@
+    for package in $@; do
+        apt -y install "$package"
+    done
     sleep 1
     ;;
 manjaro|arch*)
