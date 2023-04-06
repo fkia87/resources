@@ -18,7 +18,7 @@ case $(os) in
         yum -y install $@ || dnf -y install $@
         sleep 1
         ;;
-    ubuntu)
+    ubuntu|debian)
         apt update
         for package in $@; do
             apt -y install "$package"
