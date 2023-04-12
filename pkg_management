@@ -7,6 +7,7 @@ declare -r distro=$(grep -e '^ID=' /etc/os-release \
 echo "$distro"
 }
 
+# Usage: install_pkg <package> <package> ...
 install_pkg() {
 echo -e "\nInstalling $*..."
 case $(os) in
@@ -28,6 +29,7 @@ case $(os) in
 esac
 }
 
+# Usage: dependency_check <package> <package> ...
 dependency_check() {
 while (( $# > 0 )); do
     vverbose "Dependency check for $1 ..."
