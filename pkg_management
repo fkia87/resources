@@ -27,3 +27,12 @@ case $(os) in
         ;;
 esac
 }
+
+dependency_check() {
+while (( $# > 0 )); do
+    vverbose "Dependency check for $1 ..."
+    $1 --version > /dev/null 2>&1 || \
+        err "Dependency check failed.\n\"$1\" package is not installed. Exiting  ..." "3"
+    shift
+done
+}
