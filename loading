@@ -1,6 +1,6 @@
 # shellcheck disable=SC2148
 
-# Usage: loading1 & loading_pid="$!"
+# Usage: loading & loading_pid="$!"
 loading() {
 tput civis;
 while true; do
