@@ -4,7 +4,7 @@
 loading() {
 tput civis;
 while true; do
-    for char in '⠋' '⠙' '⠹' '⠸' '⠼' '⠴' '⠦' '⠧' '⠇' '⠏' ; do
+    for char in "⠋" "⠙" "⠹" "⠸" "⠼" "⠴" "⠦" "⠧" "⠇" "⠏" ; do
         echo -en "\b$char"
         sleep .07
     done
@@ -15,8 +15,8 @@ done
 loading2() {
 tput civis;
 while true; do
-    for char in '  •     ' '   •    ' '    •   ' '     •  ' '      • ' \
-        '     •  ' '    •   ' '   •    ' '  •     ' ' •      ' ; do
+    for char in "  •     " "   •    " "    •   " "     •  " "      • " \
+        "     •  " "    •   " "   •    " "  •     " " •      " ; do
         echo -en "\b\b\b\b\b\b\b\b$char"
         sleep .1
     done
@@ -56,7 +56,19 @@ while true; do
 done
 }
 
-# Usage: stop_loading <loading_pid> [finish message]
+# Usage: loading6 & loading_pid="$!"
+loading6() {
+tput civis;
+while true; do
+        for char in ">     " "->    " "-->   " "--->  " "----> " " ---->" \
+            "  ----" "   ---" "    --" "     -" "      " ; do
+                echo -en "\b$char"
+                sleep .1
+        done
+done
+}
+
+# Usage: stop_loading <loading_pid> [finish_message]
 stop_loading() {
 kill -9 "$1" && wait > /dev/null 2>&1
 echo -ne "\033[2K\r"
