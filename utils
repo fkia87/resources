@@ -31,18 +31,16 @@ install_pkg() {
 echo -e "\nInstalling $*..."
 case $(os) in
     centos | fedora)
-        yum -y install $@ || dnf -y install $@
+        yum -y install $@ || dnf -y install $@ || return 3
         sleep 1
         ;;
     ubuntu|debian)
         apt update
-        for package in $@; do
-            apt -y install "$package"
-        done
+        apt -y install "$@" || return 3
         sleep 1
         ;;
     manjaro|arch*)
-        pacman -Sy --noconfirm $@
+        pacman -Sy --noconfirm $@ || return 3
         sleep 1
         ;;
 esac
@@ -51,12 +49,16 @@ esac
 # Usage: dependency_check <package> <package> ...
 dependency_check() {
 while (( $# > 0 )); do
-    vverbose "Dependency check for $1 ..."
-    if ! $1 --version > /dev/null 2>&1; then
-        echo -e "Dependency check failed.\n\"$1\" package is not installed."
+    echo -en "Dependency check for $1 ..."
+    if ! $1 --version > /dev/null 2>&1 && \
+        ! $1 -v > /dev/null 2>&1 && \
+        ! $1 --help > /dev/null 2>&1; then
+        echo -e "FAILED"
+        echo -e "\"$1\" package is not installed."
         ask "Do you want to install it now?" "install_pkg $1" || \
-        err "Exitting..."
+        return 3
     fi
     shift
+    echo -e " OK"
 done
 }
