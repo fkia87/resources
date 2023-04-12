@@ -4,3 +4,16 @@ ask() {
 read -r -p "${1} [y/N]" answer
 [[ "$answer" =~ [yY].* ]] && $2
 }
+
+err() {
+echo -e "$1" >&2
+exit "$2"
+}
+
+warning() {
+echo -e "$1" >&2
+}
+
+checkuser() {
+[[ $UID == "0" ]] || { echo "You are not root."; exit 1; }
+}

@@ -7,10 +7,6 @@ declare -r distro=$(grep -e '^ID=' /etc/os-release \
 echo "$distro"
 }
 
-checkuser() {
-[[ $UID == "0" ]] || { echo "You are not root."; exit 1; }
-}
-
 install_pkg() {
 echo -e "\nInstalling $*..."
 case $(os) in
