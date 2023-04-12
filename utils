@@ -1,8 +1,9 @@
-# shellcheck disable=SC2148
+# shellcheck disable=SC2148,SC1090,SC2068
 
 ask() {
 read -r -p "${1} [y/N]" answer
-[[ "$answer" =~ [yY].* ]] && $2
+[[ "$answer" =~ [yY].* ]] && $2 && return 0
+return 1
 }
 
 err() {
@@ -15,5 +16,47 @@ echo -e "$1" >&2
 }
 
 checkuser() {
-[[ $UID == "0" ]] || { echo "You are not root."; exit 1; }
+[[ $UID == "0" ]] || err "You are not root." "1"
+}
+
+os() {
+declare -r distro=$(grep -e '^ID=' /etc/os-release \
+    | cut -d = -f 2 | sed -e 's/[[:punct:]]//g' \
+    | tr "[:upper:]" "[:lower:]")
+echo "$distro"
+}
+
+# Usage: install_pkg <package> <package> ...
+install_pkg() {
+echo -e "\nInstalling $*..."
+case $(os) in
+    centos | fedora)
+        yum -y install $@ || dnf -y install $@
+        sleep 1
+        ;;
+    ubuntu|debian)
+        apt update
+        for package in $@; do
+            apt -y install "$package"
+        done
+        sleep 1
+        ;;
+    manjaro|arch*)
+        pacman -Sy --noconfirm $@
+        sleep 1
+        ;;
+esac
+}
+
+# Usage: dependency_check <package> <package> ...
+dependency_check() {
+while (( $# > 0 )); do
+    vverbose "Dependency check for $1 ..."
+    if ! $1 --version > /dev/null 2>&1; then
+        echo -e "Dependency check failed.\n\"$1\" package is not installed."
+        ask "Do you want to install it now?" "install_pkg $1" || \
+        err "Exitting..."
+    fi
+    shift
+done
 }
