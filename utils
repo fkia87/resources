@@ -51,19 +51,20 @@ install_pkg() {
     esac
 }
 
-# Usage: dependency_check <package> <package> ...
+# Check if some package(s) is installed or not
+# Usage: dependency_check <package1> <package2> ...
 dependency_check() {
     while (( $# > 0 )); do
-        echo -en "Dependency check for $1 ..."
+        echo -en "Dependency check for $1 ... "
         if ! $1 --version > /dev/null 2>&1 && \
             ! $1 -v > /dev/null 2>&1 && \
             ! $1 --help > /dev/null 2>&1; then
             echo -e "FAILED"
-            echo -e "\"$1\" package is not installed."
+            echo -e "Package \"$1\" is not installed."
             ask "Do you want to install it now?" "install_pkg $1" || \
-            return 3
+            err "Problem installing \"$1\"." "3"
         fi
         shift
-        echo -e " OK"
+        echo -e "OK"
     done
 }
