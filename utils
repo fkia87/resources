@@ -44,7 +44,7 @@ install_pkg() {
             apt -y install "$@" || return 3
             sleep 1
             ;;
-        manjaro|arch*)
+        manjaro|endeavouros|arch*)
             pacman -Sy --noconfirm $@ || return 3
             sleep 1
             ;;
