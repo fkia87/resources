@@ -2,76 +2,76 @@
 
 # Usage: loading & loading_pid="$!"
 loading() {
-tput civis;
-while true; do
-    for char in "⠋" "⠙" "⠹" "⠸" "⠼" "⠴" "⠦" "⠧" "⠇" "⠏" ; do
-        echo -en "\b$char"
-        sleep .07
+    tput civis
+    while true; do
+        for char in "⠋" "⠙" "⠹" "⠸" "⠼" "⠴" "⠦" "⠧" "⠇" "⠏" ; do
+            echo -en "\b$char"
+            sleep .07
+        done
     done
-done
 }
 
 # Usage: loading2 & loading_pid="$!"
 loading2() {
-tput civis;
-while true; do
-    for char in "  •     " "   •    " "    •   " "     •  " "      • " \
-        "     •  " "    •   " "   •    " "  •     " " •      " ; do
-        echo -en "\b\b\b\b\b\b\b\b$char"
-        sleep .1
+    tput civis
+    while true; do
+        for char in "  •     " "   •    " "    •   " "     •  " "      • " \
+            "     •  " "    •   " "   •    " "  •     " " •      " ; do
+            echo -en "\b\b\b\b\b\b\b\b$char"
+            sleep .1
+        done
     done
-done
 }
 
 # Usage: loading3 & loading_pid="$!"
 loading3() {
-tput civis;
-while true; do
+    tput civis
+    while true; do
         for char in "░" "▒" "▓" "█" "▓" "▒" ; do
-                echo -en "\b$char"
-                sleep .06
+            echo -en "\b$char"
+            sleep .06
         done
-done
+    done
 }
 
 # Usage: loading4 & loading_pid="$!"
 loading4() {
-tput civis;
-while true; do
+    tput civis
+    while true; do
         for char in "⚬" "⚭" "⚮" "⚯" ; do
-                echo -en "\b$char"
-                sleep .13
+            echo -en "\b$char"
+            sleep .13
         done
-done
+    done
 }
 
 # Usage: loading5 & loading_pid="$!"
 loading5() {
-tput civis;
-while true; do
+    tput civis
+    while true; do
         for char in "✧" "☆" "★" "✪" "◌" "✲" ; do
-                echo -en "\b$char"
-                sleep .1
+            echo -en "\b$char"
+            sleep .1
         done
-done
+    done
 }
 
 # Usage: loading6 & loading_pid="$!"
 loading6() {
-tput civis;
-while true; do
+    tput civis
+    while true; do
         for char in ">     " "->    " "-->   " "--->  " "----> " " ---->" \
             "  ----" "   ---" "    --" "     -" "      " ; do
-                echo -en "\b$char"
-                sleep .1
+            echo -en "\b$char"
+            sleep .1
         done
-done
+    done
 }
 
 # Usage: stop_loading <loading_pid> [finish_message]
 stop_loading() {
-kill -9 "$1" && wait > /dev/null 2>&1
-echo -ne "\033[2K\r"
-[[ -n "$2" ]] && echo -e "$2"
-tput cnorm
+    kill -9 "$1" && wait > /dev/null 2>&1
+    echo -ne "\033[2K\r"
+    [[ -n "$2" ]] && echo -e "$2"
+    tput cnorm
 }
