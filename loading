@@ -62,7 +62,7 @@ loading6() {
     while true; do
         for char in ">     " "->    " "-->   " "--->  " "----> " " ---->" \
             "  ----" "   ---" "    --" "     -" "      " ; do
-            echo -en "\b$char"
+            echo -en "\b\b\b\b\b\b$char"
             sleep .1
         done
     done
