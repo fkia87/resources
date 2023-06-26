@@ -35,7 +35,7 @@ osversion() {
 install_pkg() {
     echo -e "\nInstalling $*..."
     case $(os) in
-        centos | fedora | almalinux)
+        centos | fedora | almalinux | rocky)
             yum -y install $@ || dnf -y install $@ || return 3
             sleep 1
             ;;
