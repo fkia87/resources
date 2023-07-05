@@ -6,6 +6,7 @@ ask() {
     read -r -p "${1} [y/N] " answer
     tput cnorm
     [[ "$answer" =~ [yY].* ]] && { $2; return $?; }
+    return 1
 }
 
 err() {
