@@ -37,7 +37,7 @@ install_pkg() {
     echo -e "\nInstalling $*..."
     case $(os) in
         centos | fedora | almalinux | rocky)
-            yum -y install $@ || dnf -y install $@ || return 3
+            yum -y install $@ 2>/dev/null || dnf -y install $@ || return 3
             sleep 1
             ;;
         ubuntu | debian)
