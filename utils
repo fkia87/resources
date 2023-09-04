@@ -6,6 +6,7 @@ ask() {
     read -r -p "${1} [y/N] " answer
     tput cnorm
     [[ "$answer" =~ [yY].* ]] && { $2; return $?; }
+    return 1
 }
 
 err() {
@@ -35,8 +36,8 @@ osversion() {
 install_pkg() {
     echo -e "\nInstalling $*..."
     case $(os) in
-        centos | fedora | almalinux)
-            yum -y install $@ || dnf -y install $@ || return 3
+        centos | fedora | almalinux | rocky)
+            yum -y install $@ 2>/dev/null || dnf -y install $@ || return 3
             sleep 1
             ;;
         ubuntu | debian)
