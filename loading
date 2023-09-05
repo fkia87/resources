@@ -10,6 +10,7 @@ loading() {
         done
     done
 }
+export -f loading
 
 # Usage: loading2 & loading_pid="$!"
 loading2() {
@@ -22,6 +23,7 @@ loading2() {
         done
     done
 }
+export -f loading2
 
 # Usage: loading3 & loading_pid="$!"
 loading3() {
@@ -33,6 +35,7 @@ loading3() {
         done
     done
 }
+export -f loading3
 
 # Usage: loading4 & loading_pid="$!"
 loading4() {
@@ -44,6 +47,7 @@ loading4() {
         done
     done
 }
+export -f loading4
 
 # Usage: loading5 & loading_pid="$!"
 loading5() {
@@ -55,6 +59,7 @@ loading5() {
         done
     done
 }
+export -f loading5
 
 # Usage: loading6 & loading_pid="$!"
 loading6() {
@@ -67,6 +72,7 @@ loading6() {
         done
     done
 }
+export -f loading6
 
 # Usage: stop_loading <loading_pid> [finish_message]
 stop_loading() {
@@ -75,3 +81,4 @@ stop_loading() {
     [[ -n "$2" ]] && echo -e "$2"
     tput cnorm
 }
+export -f stop_loading

@@ -8,29 +8,35 @@ ask() {
     [[ "$answer" =~ [yY].* ]] && { $2; return $?; }
     return 1
 }
+export -f ask
 
 err() {
     echo -e "$1" >&2
     exit "$2"
 }
+export -f  err
 
 warning() {
     echo -e "$1" >&2
 }
+export -f warning
 
 checkuser() {
     [[ $UID == "0" ]] || err "You are not root." "1"
 }
+export -f checkuser
 
 os() {
     grep -e '^ID=' /etc/os-release \
         | cut -d = -f 2 | sed -e 's/[[:punct:]]//g' \
         | tr "[:upper:]" "[:lower:]"
 }
+export -f  os
 
 osversion() {
     grep -e '^DISTRIB_RELEASE=' /etc/lsb-release | cut -d = -f 2
 }
+export -f osversion
 
 # Usage: install_pkg <package> <package> ...
 install_pkg() {
@@ -51,6 +57,7 @@ install_pkg() {
             ;;
     esac
 }
+export -f install_pkg
 
 # Check if some package(s) is installed or not
 # Usage: dependency_check <package1> <package2> ...
@@ -69,3 +76,4 @@ dependency_check() {
         echo -e "OK"
     done
 }
+export -f dependency_check

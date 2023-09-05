@@ -14,12 +14,14 @@ if [[ -z $MAINIF ]]; then
     return 1
 fi
 }
+export -f find_mainif
 
 getifip() {
 # Returns IP of a given interface.
 # Usage: getifip <interface>
 ip -4 a show dev "$1" | grep 'inet ' | head -n 1 | awk '{print $2}' | cut -d / -f 1
 }
+export -f getifip
 
 enable_ipforward() {
 # Checks and enables ip forwarding kernel parameter.
@@ -29,6 +31,7 @@ if grep '0' /proc/sys/net/ipv4/ip_forward >/dev/null; then
     sysctl -p > /dev/null 2>&1 || return 1
 fi
 }
+export -f enable_ipforward
 
 check_ipprivate() {
 # Checks if given IP address is in class C private range. (192.168.0.0/16)
@@ -40,3 +43,4 @@ else
     return 1
 fi
 }
+export -f check_ipprivate
