@@ -6,72 +6,72 @@
 # note: \e or \x1B also work instead of \033 
 
 # Reset
-declare -r DECOLOR; export DECOLOR='\033[0m'                    # Reset all attributes
-declare -r UNBOLD; export UNBOLD='\033[21m'                     # Reset Bold/Bright
-declare -r UNDIM; export UNDIM='\033[22m'                       # Reset Dim
-declare -r DEUNDERLINE; export DEUNDERLINE='\033[24m'           # Reset Underline
-declare -r UNBLINK; export UNBLINK='\033[25m'                   # Reset Blink
-declare -r DEINVERT; export DEINVERT='\033[27m'                 # Reset Inverted Background
-declare -r UNHIDE; UNHIDE='\033[28m'                            # Reset Hidden
+declare DECOLOR; export DECOLOR='\033[0m'                    # Reset all attributes
+declare UNBOLD; export UNBOLD='\033[21m'                     # Reset Bold/Bright
+declare UNDIM; export UNDIM='\033[22m'                       # Reset Dim
+declare DEUNDERLINE; export DEUNDERLINE='\033[24m'           # Reset Underline
+declare UNBLINK; export UNBLINK='\033[25m'                   # Reset Blink
+declare DEINVERT; export DEINVERT='\033[27m'                 # Reset Inverted Background
+declare UNHIDE; UNHIDE='\033[28m'                            # Reset Hidden
 
 # Colors
-declare -r BLACK; export BLACK='\033[0;30m'                     # Black
-declare -r RED; export RED='\033[0;31m'                         # Red
-declare -r GREEN; export GREEN='\033[0;32m'                     # Green
-declare -r YELLOW; export YELLOW='\033[0;33m'                   # Yellow
-declare -r BLUE; export BLUE='\033[0;34m'                       # Blue
-declare -r PURPLE; export PURPLE='\033[0;35m'                   # Purple
-declare -r CYAN; export CYAN='\033[0;36m'                       # Cyan
-declare -r WHITE; export WHITE='\033[0;97m'                     # White
-declare -r LGREY; export LGREY='\033[0;37m'                     # Light Gray
-declare -r DGREY; export DGREY='\033[0;90m'                     # Dark Gray
-declare -r LRED; export LRED='\033[0;91m'                       # Light Red
-declare -r LGREEN; export LGREEN='\033[0;92m'                   # Light Green
-declare -r LYELLOW; export LYELLOW='\033[0;93m'                 # Light Yellow
-declare -r LBLUE; export LBLUE='\033[0;94m'                     # Light Blue
-declare -r LPURPLE; export LPURPLE='\033[0;95m'                 # Light Purple
-declare -r LCYAN; export LCYAN='\033[0;96m'                     # Light Cyan
+declare BLACK; export BLACK='\033[0;30m'                     # Black
+declare RED; export RED='\033[0;31m'                         # Red
+declare GREEN; export GREEN='\033[0;32m'                     # Green
+declare YELLOW; export YELLOW='\033[0;33m'                   # Yellow
+declare BLUE; export BLUE='\033[0;34m'                       # Blue
+declare PURPLE; export PURPLE='\033[0;35m'                   # Purple
+declare CYAN; export CYAN='\033[0;36m'                       # Cyan
+declare WHITE; export WHITE='\033[0;97m'                     # White
+declare LGREY; export LGREY='\033[0;37m'                     # Light Gray
+declare DGREY; export DGREY='\033[0;90m'                     # Dark Gray
+declare LRED; export LRED='\033[0;91m'                       # Light Red
+declare LGREEN; export LGREEN='\033[0;92m'                   # Light Green
+declare LYELLOW; export LYELLOW='\033[0;93m'                 # Light Yellow
+declare LBLUE; export LBLUE='\033[0;94m'                     # Light Blue
+declare LPURPLE; export LPURPLE='\033[0;95m'                 # Light Purple
+declare LCYAN; export LCYAN='\033[0;96m'                     # Light Cyan
 
 # Bold
-declare -r BOLD; export BOLD='\033[1m'                          # Bold
-declare -r BBLACK; export BBLACK='\033[1;30m'                   # Black
-declare -r BRED; export BRED='\033[1;31m'                       # Red
-declare -r BGREEN; export BGREEN='\033[1;32m'                   # Green
-declare -r BYELLOW; export BYELLOW='\033[1;33m'                 # Yellow
-declare -r BBLUE; export BBLUE='\033[1;34m'                     # Blue
-declare -r BPURPLE; export BPURPLE='\033[1;35m'                 # Purple
-declare -r BCYAN; export BCYAN='\033[1;36m'                     # Cyan
-declare -r BWHITE; export BWHITE='\033[1;37m'                   # White
+declare BOLD; export BOLD='\033[1m'                          # Bold
+declare BBLACK; export BBLACK='\033[1;30m'                   # Black
+declare BRED; export BRED='\033[1;31m'                       # Red
+declare BGREEN; export BGREEN='\033[1;32m'                   # Green
+declare BYELLOW; export BYELLOW='\033[1;33m'                 # Yellow
+declare BBLUE; export BBLUE='\033[1;34m'                     # Blue
+declare BPURPLE; export BPURPLE='\033[1;35m'                 # Purple
+declare BCYAN; export BCYAN='\033[1;36m'                     # Cyan
+declare BWHITE; export BWHITE='\033[1;37m'                   # White
 
 # Underline
-declare -r UNDERLINE; export UNDERLINE='\033[4m'                # Underline
-declare -r UBLACK; export UBLACK='\033[4;30m'                   # Black
-declare -r URED; export URED='\033[4;31m'                       # Red
-declare -r UGREEN; export UGREEN='\033[4;32m'                   # Green
-declare -r UYELLOW; export UYELLOW='\033[4;33m'                 # Yellow
-declare -r UBLUE; export UBLUE='\033[4;34m'                     # Blue
-declare -r UPURPLE; export UPURPLE='\033[4;35m'                 # Purple
-declare -r UCYAN; export UCYAN='\033[4;36m'                     # Cyan
-declare -r UWHITE; export UWHITE='\033[4;37m'                   # White
+declare UNDERLINE; export UNDERLINE='\033[4m'                # Underline
+declare UBLACK; export UBLACK='\033[4;30m'                   # Black
+declare URED; export URED='\033[4;31m'                       # Red
+declare UGREEN; export UGREEN='\033[4;32m'                   # Green
+declare UYELLOW; export UYELLOW='\033[4;33m'                 # Yellow
+declare UBLUE; export UBLUE='\033[4;34m'                     # Blue
+declare UPURPLE; export UPURPLE='\033[4;35m'                 # Purple
+declare UCYAN; export UCYAN='\033[4;36m'                     # Cyan
+declare UWHITE; export UWHITE='\033[4;37m'                   # White
 
 # Background
-declare -r ON_BLACK; export ON_BLACK='\033[40m'                 # Black
-declare -r ON_RED; export ON_RED='\033[41m'                     # Red
-declare -r ON_GREEN; export ON_GREEN='\033[42m'                 # Green
-declare -r ON_YELLOW; export ON_YELLOW='\033[43m'               # Yellow
-declare -r ON_BLUE; export ON_BLUE='\033[44m'                   # Blue
-declare -r ON_PURPLE; export ON_PURPLE='\033[45m'               # Purple
-declare -r ON_CYAN; export ON_CYAN='\033[46m'                   # Cyan
-declare -r ON_WHITE; export ON_WHITE='\033[47m'                 # White
+declare ON_BLACK; export ON_BLACK='\033[40m'                 # Black
+declare ON_RED; export ON_RED='\033[41m'                     # Red
+declare ON_GREEN; export ON_GREEN='\033[42m'                 # Green
+declare ON_YELLOW; export ON_YELLOW='\033[43m'               # Yellow
+declare ON_BLUE; export ON_BLUE='\033[44m'                   # Blue
+declare ON_PURPLE; export ON_PURPLE='\033[45m'               # Purple
+declare ON_CYAN; export ON_CYAN='\033[46m'                   # Cyan
+declare ON_WHITE; export ON_WHITE='\033[47m'                 # White
 
 # Dim
-declare -r DIM; export DIM='\033[2m'
+declare DIM; export DIM='\033[2m'
 
 # Blink
-declare -r BLINK; export BLINK='\033[5m'
+declare BLINK; export BLINK='\033[5m'
 
 # Invert Background
-declare -r INVERT; export INVERT='\033[7m'
+declare INVERT; export INVERT='\033[7m'
 
 # Hidden
-declare -r HIDE; export HIDE='\033[8m'
+declare HIDE; export HIDE='\033[8m'
