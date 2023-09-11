@@ -1,5 +1,4 @@
 #!/bin/bash
-set -euo pipefail
 
 [[ $UID == "0" ]] || { echo "You are not root." >&2; exit 1; }
 
