@@ -9,4 +9,4 @@ install -v -m 644 ./loading /etc/profile.d/loading.sh
 install -v -m 644 ./network /etc/profile.d/network.sh
 install -v -m 644 ./utils /etc/profile.d/utils.sh
 
-echo -e "\nDone. Please login again.\n"
+[[ $1 == "-q" ]] || echo -e "\nDone. Please login again.\n"
