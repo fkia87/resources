@@ -5,14 +5,15 @@ ask() {
     tput civis
     read -r -p "${1} [y/N] " answer
     tput cnorm
-    [[ "$answer" =~ [yY].* ]] && { $2; return $?; }
+    [[ "$answer" =~ ^[yY].* ]] && { $2; return $?; }
     return 1
 }
 export -f ask
 
+# Usage err <message> [exit_code]
 err() {
     echo -e "$1" >&2
-    exit "$2"
+    exit "${2:-1}"
 }
 export -f  err
 
