@@ -74,6 +74,94 @@ loading6() {
 }
 export -f loading6
 
+# Usage: loading7 & loading_pid="$!"
+loading7() {
+    tput civis
+    while true; do
+        for char in "🌍" "🌎" "🌏" ; do
+            echo -en "\b\b$char"
+            sleep .15
+        done
+    done
+}
+export -f loading7
+
+# Usage: loading8 & loading_pid="$!"
+loading8() {
+    tput civis
+    while true; do
+        for char in "▁▁▁▁▁" "▂▁▁▁▁" "▃▂▁▁▁" "▅▃▂▁▁" "▆▅▃▂▁" "▇▆▅▃▂" "█▇▆▅▃" ; do
+            echo -en "\b\b\b\b\b$char"
+            sleep .15
+        done
+    done
+}
+export -f loading8
+
+# Usage: loading9 & loading_pid="$!"
+loading9() {
+    tput civis
+    while true; do
+        for char in "⚫       " " ⚫      " "  ⚫     " "   ⚫    " "    ⚫   " \
+            "     ⚫  " "      ⚫ " "       ⚫" ; do
+            echo -en "\b\b\b\b\b\b\b\b\b$char"
+            sleep .15
+        done
+    done
+}
+export -f loading9
+
+# Usage: loading10 & loading_pid="$!"
+loading10() {
+    tput civis
+    while true; do
+        for char in "-" "\\" "|" "/" ; do
+            echo -en "\b$char"
+            sleep .15
+        done
+    done
+}
+export -f loading10
+
+# Usage: loading11 & loading_pid="$!"
+loading11() {
+    tput civis
+    while true; do
+        for char in "▶      " " ▶     " "  ▶    " "   ▶   " "    ▶  " \
+            "     ▶ " "      ▶" "     ◀ " "    ◀  " "   ◀   " "  ◀    " \
+            " ◀     " "◀      " ; do
+            echo -en "\b\b\b\b\b\b\b$char"
+            sleep .15
+        done
+    done
+}
+export -f loading11
+
+# Usage: loading12 & loading_pid="$!"
+loading12() {
+    tput civis
+    while true; do
+        for char in "🕛" "🕐" "🕑" "🕒" "🕓" "🕔" "🕕" "🕖" "🕗" "🕘" "🕙" "🕚" ; do
+            echo -en "\b\b$char"
+            sleep .1
+        done
+    done
+}
+export -f loading12
+
+# Usage: loading13 & loading_pid="$!"
+loading13() {
+    tput civis
+    while true; do
+        for char in "[        ]" "[▮       ]" "[▮▮      ]" "[▮▮▮     ]" \
+            "[▮▮▮▮    ]" "[▮▮▮▮▮   ]" "[▮▮▮▮▮▮  ]" "[▮▮▮▮▮▮▮ ]" "[▮▮▮▮▮▮▮▮]" ; do
+            echo -en "\b\b\b\b\b\b\b\b\b\b$char"
+            sleep .15
+        done
+    done
+}
+export -f loading13
+
 # Usage: stop_loading <loading_pid> [finish_message]
 stop_loading() {
     kill -9 "$1" && wait > /dev/null 2>&1
