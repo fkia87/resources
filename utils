@@ -22,6 +22,41 @@ warning() {
 }
 export -f warning
 
+# Waits for the output of a command to be expected value. Executing the 
+# command every 1 second. You can give a max_tries or it will do so for ever.
+#
+# Usage: wait_for "<command>" "<expected_stdout>" [max_tries]
+wait_for() {
+    [[ -z $1 ]] && return 1
+    [[ -z $2 ]] && return 1
+    local cmd="$1"
+    local expected_output=$2
+    local -i max_tries=9223372036854775807
+    local -i delay=1
+    
+    [[ -n $3 ]] && max_tries=$3
+    
+    local -i tried=0
+    
+    while true; do
+        if (( tried < max_tries )); then
+            echo -en "try $((tried+1)): $cmd == $expected_output "
+            if [[ $($cmd 2>/dev/null) == "$expected_output" ]]; then
+                echo -e "-> True"
+                return 0
+            else
+                echo -e "-> False"
+                sleep $delay
+                ((tried++))
+            fi
+        else
+            echo -e "max tries reached" >&2
+            return 2
+        fi
+    done
+}
+export -f wait_for
+
 checkuser() {
     [[ $UID == "0" ]] || err "You are not root." "1"
 }
