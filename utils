@@ -35,7 +35,8 @@ os() {
 export -f  os
 
 osversion() {
-    grep -e '^DISTRIB_RELEASE=' /etc/lsb-release | cut -d = -f 2
+    # grep -e '^DISTRIB_RELEASE=' /etc/lsb-release | cut -d = -f 2
+    grep -e '^VERSION_ID=' /etc/os-release | cut -d = -f 2
 }
 export -f osversion
 
