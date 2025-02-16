@@ -17,6 +17,29 @@ err() {
 }
 export -f  err
 
+mvtype() {
+    # Moves all files with given extension to destination directory.
+    # If destination doesn't exist it will create it.
+    
+    # Explanation:
+    
+    # find . -type f -name "*.$1": This finds all files in the current directory 
+    # (and subdirectories) that end with .$1.
+    
+    # -print0: This option prints the filenames separated by a null character 
+    # (instead of spaces) to handle spaces and special characters in filenames.
+    
+    # xargs -0: Reads the null-separated filenames and passes them to the mv 
+    # command.
+    
+    # mv -t $2: Moves the found files to the specified folder.
+
+    [[ -z $1 ]] || [[ -z $2 ]] && return 1
+    [[ ! -d $2 ]] && mkdir -p "$2"
+    find . -type f -name "*.$1" -print0 | xargs -0 mv -t "$2"
+}
+export -f mvtype
+
 warning() {
     echo -e "$1" >&2
 }
