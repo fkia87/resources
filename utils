@@ -1,6 +1,8 @@
 # shellcheck disable=SC2148,SC1090,SC2068
 
-# Usage: ask "<prompt message>" "<command or function>"
+# Usage: 
+# trap 'tput cnorm; echo; exit' SIGINT
+# ask "<prompt message>" "<command or function>"
 ask() {
     tput civis
     read -r -p "${1} [y/N] " answer
